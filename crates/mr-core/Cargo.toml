@@ -1,0 +1,15 @@
+[package]
+name = "mr-core"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+rpc = { workspace = true }
+tokio = { workspace = true }
+serde = { workspace = true }
+log = { workspace = true }
+rand = { workspace = true }
+anyhow = { workspace = true }
+
+[dev-dependencies]
+tokio-test = "0.4"

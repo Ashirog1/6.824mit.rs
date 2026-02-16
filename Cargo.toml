@@ -1,0 +1,52 @@
+[workspace]
+resolver = "2"
+
+members = [
+    # Infrastructure
+    "crates/rpc",
+    "crates/codec",
+    "crates/linearize",
+
+    # Consensus
+    "crates/raft",
+
+    # Storage services
+    "crates/kv-simple",
+    "crates/kv-raft",
+    "crates/shard-ctl",
+    "crates/kv-sharded",
+
+    # MapReduce
+    "crates/mr-core",
+    "crates/mr-plugins",
+
+    # Testing
+    "crates/test-models",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+
+[workspace.dependencies]
+# Common dependencies
+tokio = { version = "1", features = ["full"] }
+serde = { version = "1", features = ["derive"] }
+bincode = "1"
+log = "0.4"
+env_logger = "0.11"
+rand = "0.8"
+anyhow = "1"
+
+# Internal workspace crates
+rpc = { path = "crates/rpc" }
+codec = { path = "crates/codec" }
+linearize = { path = "crates/linearize" }
+raft = { path = "crates/raft" }
+kv-simple = { path = "crates/kv-simple" }
+kv-raft = { path = "crates/kv-raft" }
+shard-ctl = { path = "crates/shard-ctl" }
+kv-sharded = { path = "crates/kv-sharded" }
+mr-core = { path = "crates/mr-core" }
+mr-plugins = { path = "crates/mr-plugins" }
+test-models = { path = "crates/test-models" }

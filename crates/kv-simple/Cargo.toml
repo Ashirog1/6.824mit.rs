@@ -1,0 +1,13 @@
+[package]
+name = "kv-simple"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+rpc = { workspace = true }
+tokio = { workspace = true }
+serde = { workspace = true }
+log = { workspace = true }
+
+[dev-dependencies]
+tokio-test = "0.4"

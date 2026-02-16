@@ -1,0 +1,8 @@
+[package]
+name = "test-models"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+linearize = { workspace = true }
+serde = { workspace = true }

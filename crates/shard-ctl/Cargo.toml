@@ -1,0 +1,15 @@
+[package]
+name = "shard-ctl"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+rpc = { workspace = true }
+codec = { workspace = true }
+raft = { workspace = true }
+tokio = { workspace = true }
+serde = { workspace = true }
+log = { workspace = true }
+
+[dev-dependencies]
+tokio-test = "0.4"

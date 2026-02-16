@@ -1,0 +1,17 @@
+[package]
+name = "kv-raft"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+rpc = { workspace = true }
+codec = { workspace = true }
+raft = { workspace = true }
+tokio = { workspace = true }
+serde = { workspace = true }
+log = { workspace = true }
+
+[dev-dependencies]
+test-models = { workspace = true }
+linearize = { workspace = true }
+tokio-test = "0.4"
