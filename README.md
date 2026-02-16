@@ -1,6 +1,6 @@
 # MIT 6.824 Distributed Systems in Rust
 
-A Rust implementation of MIT's 6.824 Distributed Systems course labs, ported from Go.
+A Rust implementation of MIT's 6.824 Distributed Systems course labs, ported from Go. 
 
 ## Migration from Go
 
