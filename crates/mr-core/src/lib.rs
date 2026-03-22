@@ -19,7 +19,7 @@
 //! ```
 
 /// A key-value pair produced by map and consumed by reduce.
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, serde::Serialize, serde::Deserialize)]
 pub struct KeyValue {
     pub key: String,
     pub value: String,

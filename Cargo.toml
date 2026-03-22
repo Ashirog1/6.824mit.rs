@@ -34,6 +34,7 @@ edition = "2021"
 # Common dependencies
 tokio = { version = "1", features = ["full"] }
 serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["std"] }
 bincode = "1"
 log = "0.4"
 env_logger = "0.11"
