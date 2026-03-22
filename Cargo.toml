@@ -18,10 +18,12 @@ members = [
 
     # MapReduce
     "crates/mr-core",
-    "crates/mr-plugins",
 
     # Testing
     "crates/test-models",
+
+    # Binaries
+    "crates/main",
 ]
 
 [workspace.package]
@@ -48,5 +50,4 @@ kv-raft = { path = "crates/kv-raft" }
 shard-ctl = { path = "crates/shard-ctl" }
 kv-sharded = { path = "crates/kv-sharded" }
 mr-core = { path = "crates/mr-core" }
-mr-plugins = { path = "crates/mr-plugins" }
 test-models = { path = "crates/test-models" }

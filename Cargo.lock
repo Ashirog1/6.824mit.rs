@@ -142,6 +142,14 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5e5032e24019045c762d3c0f28f5b6b8bbf38563a65908389bf7978758920897"
 
 [[package]]
+name = "main"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "mr-core",
+]
+
+[[package]]
 name = "mio"
 version = "1.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -157,21 +165,13 @@ name = "mr-core"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "bincode",
  "log",
  "rand",
  "rpc",
  "serde",
  "tokio",
  "tokio-test",
-]
-
-[[package]]
-name = "mr-plugins"
-version = "0.1.0"
-dependencies = [
- "log",
- "mr-core",
- "serde",
 ]
 
 [[package]]

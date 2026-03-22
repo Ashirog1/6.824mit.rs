@@ -1,9 +1,0 @@
-[package]
-name = "mr-plugins"
-version.workspace = true
-edition.workspace = true
-
-[dependencies]
-mr-core = { workspace = true }
-serde = { workspace = true }
-log = { workspace = true }

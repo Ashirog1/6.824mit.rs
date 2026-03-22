@@ -1,0 +1,20 @@
+[package]
+name = "main"
+version.workspace = true
+edition.workspace = true
+
+[[bin]]
+name = "mr-sequential"
+path = "src/mr-sequential.rs"
+
+# [[bin]]
+# name = "mr-coordinator"
+# path = "src/bin/mr-coordinator.rs"
+
+# [[bin]]
+# name = "mr-worker"
+# path = "src/bin/mr-worker.rs"
+
+[dependencies]
+mr-core = { workspace = true }
+anyhow = { workspace = true }
