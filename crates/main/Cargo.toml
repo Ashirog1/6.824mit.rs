@@ -7,14 +7,16 @@ edition.workspace = true
 name = "mr-sequential"
 path = "src/mr-sequential.rs"
 
-# [[bin]]
-# name = "mr-coordinator"
-# path = "src/bin/mr-coordinator.rs"
+[[bin]]
+name = "mr-coordinator"
+path = "src/mr-coordinator.rs"
 
-# [[bin]]
-# name = "mr-worker"
-# path = "src/bin/mr-worker.rs"
+[[bin]]
+name = "mr-worker"
+path = "src/mr-worker.rs"
 
 [dependencies]
 mr-core = { workspace = true }
 anyhow = { workspace = true }
+tokio   = { workspace = true } 
+

@@ -35,7 +35,7 @@ impl State {
         for (id, p) in self.maps.iter_mut().enumerate() {
             if *p == Phase::Idle {
                 *p = Phase::Running(now);
-                return Task { task_type: TaskType::Map, task_id: id, n_reduce: self.n_reduce, n_map, filename: String::new() }
+                return Task { task_type: TaskType::Map, task_id: id, n_reduce: self.n_reduce, n_map, filename: self.files[id].clone() }
             }
         }
         

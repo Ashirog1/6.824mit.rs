@@ -47,7 +47,7 @@ mod tests {
     #[tokio::test]
     async fn task_write_read_roundtrip() {
         let (mut w, mut r) = UnixStream::pair().unwrap();
-        let sent = Task { task_type: TaskType::Map, task_id: 7, n_reduce: 10, n_map: 5 };
+        let sent = Task { task_type: TaskType::Map, task_id: 7, n_reduce: 10, n_map: 5, filename: String::new()};
         write_msg(&mut w, &sent).await.unwrap();
         let got: Task = read_msg(&mut r).await.unwrap();
         assert_eq!(got.task_type, sent.task_type);
@@ -60,10 +60,11 @@ mod tests {
     async fn all_task_types_roundtrip() {
         for kind in [TaskType::Map, TaskType::Reduce, TaskType::Wait, TaskType::Done] {
             let (mut w, mut r) = UnixStream::pair().unwrap();
-            let t = Task { task_type: kind, task_id: 0, n_reduce: 4, n_map: 4};
+            let t = Task { task_type: kind, task_id: 0, n_reduce: 4, n_map: 4, filename: String::new() };
             write_msg(&mut w, &t).await.unwrap();
             let got: Task = read_msg(&mut r).await.unwrap();
             assert_eq!(got.task_type, kind);
         }
+        
     }
 }
