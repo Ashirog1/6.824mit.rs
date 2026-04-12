@@ -4,22 +4,66 @@
 //!
 //! # Overview
 //!
-//! This crate implements a distributed MapReduce framework with coordinator
-//! and worker processes.
+//! This crate provides:
+//! - Core types (`KeyValue`) and traits (`MapReduce`)
+//! - Built-in MapReduce applications (word count, indexer, etc.)
+//! - Future: Distributed coordinator and worker processes
 //!
-//! # Key Features
+//! # Usage
 //!
-//! - Task distribution and scheduling
-//! - Fault tolerance via task reassignment
-//! - Coordinator tracks worker progress
-//! - Support for map and reduce tasks
+//! ```ignore
+//! use mr_core::{MapReduce, WordCount, KeyValue};
 //!
-//! # Key Types
-//!
-//! - `Coordinator` - Distributes tasks to workers
-//! - `Worker` - Executes map/reduce tasks
-//! - Task types: `MapTask`, `ReduceTask`, `WaitTask`, `DoneTask`
-//! - RPC protocol for coordinator-worker communication
+//! let app = WordCount;
+//! let results = app.map("file.txt", "hello world");
+//! ```
 
-// TODO: Implement Coordinator, Worker, and task types
-// Reference: go-version/src/mr/coordinator.go, worker.go, rpc.go
+/// A key-value pair produced by map and consumed by reduce.
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, serde::Serialize, serde::Deserialize)]
+pub struct KeyValue {
+    pub key: String,
+    pub value: String,
+}
+
+impl KeyValue {
+    pub fn new(key: impl Into<String>, value: impl Into<String>) -> Self {
+        Self {
+            key: key.into(),
+            value: value.into(),
+        }
+    }
+}
+
+/// Trait for MapReduce applications.
+///
+/// Implement this trait to create custom MapReduce jobs.
+pub trait MapReduce {
+    /// Map function: processes input and produces key-value pairs.
+    ///
+    /// # Arguments
+    /// * `filename` - Name of the input file (for context)
+    /// * `contents` - Complete contents of the file
+    ///
+    /// # Returns
+    /// Vector of key-value pairs to be shuffled and reduced
+    fn map(&self, filename: &str, contents: &str) -> Vec<KeyValue>;
+
+    /// Reduce function: aggregates values for a single key.
+    ///
+    /// # Arguments
+    /// * `key` - The key to reduce
+    /// * `values` - All values associated with this key
+    ///
+    /// # Returns
+    /// The reduced result as a string
+    fn reduce(&self, key: &str, values: &[String]) -> String;
+}
+
+/// Built-in MapReduce applications
+pub mod apps;
+pub mod rpc;
+pub mod coordinator;
+pub mod worker;
+
+// Re-export common apps for convenience
+pub use apps::WordCount;

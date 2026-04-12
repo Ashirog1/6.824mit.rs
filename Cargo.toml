@@ -18,10 +18,12 @@ members = [
 
     # MapReduce
     "crates/mr-core",
-    "crates/mr-plugins",
 
     # Testing
     "crates/test-models",
+
+    # Binaries
+    "crates/main",
 ]
 
 [workspace.package]
@@ -32,6 +34,7 @@ edition = "2021"
 # Common dependencies
 tokio = { version = "1", features = ["full"] }
 serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["std"] }
 bincode = "1"
 log = "0.4"
 env_logger = "0.11"
@@ -48,5 +51,4 @@ kv-raft = { path = "crates/kv-raft" }
 shard-ctl = { path = "crates/shard-ctl" }
 kv-sharded = { path = "crates/kv-sharded" }
 mr-core = { path = "crates/mr-core" }
-mr-plugins = { path = "crates/mr-plugins" }
 test-models = { path = "crates/test-models" }
