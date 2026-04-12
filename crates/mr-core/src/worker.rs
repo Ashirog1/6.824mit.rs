@@ -52,7 +52,7 @@ async fn do_reduce(app: &dyn MapReduce, task: &Task) -> anyhow::Result<()> {
     
     // clean up
     for x in 0..task.n_map {
-        let _ = tokio::fs::remove_file(format!("mr-{}-{}", x, task.task_id));
+        let _ = tokio::fs::remove_file(format!("mr-{}-{}", x, task.task_id)).await;
     }
     Ok(())
 }
