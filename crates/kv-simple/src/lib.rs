@@ -21,3 +21,5 @@
 
 // TODO: Implement KVServer, Clerk, and RPC types
 // Reference: go-version/src/kvsrv/server.go, client.go, common.go
+
+mod common;

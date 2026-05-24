@@ -16,3 +16,12 @@
 
 // TODO: Implement Network, ClientEnd, Server, Service types
 // Reference: go-version/src/labrpc/labrpc.go
+
+use tokio::sync::oneshot;
+
+struct RawCall {
+    server_name: String,
+    method: String,
+    args: Vec<u8>,
+    reply_tx: oneshot::Sender<Option<Vec<u8>>>;
+}

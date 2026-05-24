@@ -65,6 +65,5 @@ mod tests {
             let got: Task = read_msg(&mut r).await.unwrap();
             assert_eq!(got.task_type, kind);
         }
-        
     }
 }
